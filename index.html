@@ -19,13 +19,10 @@ button:hover { transform:scale(1.1) rotate(-1deg); }
 #yesBtn { background:#ff1e56; color:white; box-shadow:0 12px 25px rgba(255,30,86,0.5); }
 #noBtn { background:#ddd; color:#333; }
 
+.gif { width:200px; height:200px; margin:20px auto; display:block; border-radius:30px; box-shadow:0 10px 20px rgba(0,0,0,0.3); }
+
 .hearts { position:fixed; inset:0; pointer-events:none; z-index:5; }
-.heart { position:absolute; font-size:2.5rem; animation:floatUp 3s linear infinite; }
-
-.confetti { position:fixed; inset:0; pointer-events:none; z-index:5; }
-.confetti-piece { position:absolute; width:10px; height:10px; opacity:0.9; }
-
-.gif { width:80px; height:80px; position:absolute; pointer-events:none; z-index:2; }
+.heart { position:absolute; font-size:2rem; animation:floatUp 3s linear infinite; }
 
 @keyframes popIn { from{transform:scale(0.6); opacity:0;} to{transform:scale(1); opacity:1;} }
 @keyframes floatUp { from{transform:translateY(100vh) scale(0.6);opacity:1;} to{transform:translateY(-10vh) scale(1.5);opacity:0;} }
@@ -35,7 +32,9 @@ button:hover { transform:scale(1.1) rotate(-1deg); }
 
 <audio id="music" src="caramelldansen.mp3" loop></audio>
 
-<!-- Screens -->
+<div class="hearts" id="hearts"></div>
+
+<!-- Screens before YES -->
 <div class="screen active" id="screen1">
   <h1>Yo Mmnaa <3 💕</h1>
   <p>Lowkey feels unreal… we started chatting Dec 2025 & boom, suddenly we’re all kisses & hugs 😭💖</p>
@@ -66,37 +65,47 @@ button:hover { transform:scale(1.1) rotate(-1deg); }
   </div>
 </div>
 
+<!-- Screens after YES click -->
 <div class="screen" id="screen4">
-  <h1>Yooo chaos mode ON! 🎉💃</h1>
-  <p>You just made me the happiest nerd alive 😭💖</p>
-  <p>Hearts, hugs, and random chaos incoming 😆💘</p>
+  <h1>Yaaay 😍</h1>
+  <p>OMG Mmnaa, you just made my heart explode 💥💖💘</p>
+  <img src="gif1.gif" class="gif">
   <button onclick="nextScreen(5)">Next ➡️</button>
 </div>
 
 <div class="screen" id="screen5">
-  <h1>Love u Mmnaa <3 😍</h1>
-  <p>Thanks for being the funniest, cutest, most insane lil human ever 😂💖</p>
-  <p>Valentine’s Month 2026 = chaotic vibes, kisses, hugs, and mad love 💕</p>
+  <h1>Hugs incoming! 🤗💞</h1>
+  <p>Every moment with you is wild and fun AF 😂💖💋</p>
+  <img src="gif2.gif" class="gif">
   <button onclick="nextScreen(6)">Next ➡️</button>
 </div>
 
 <div class="screen" id="screen6">
-  <h1>Extra chaos ft. chibi madness 💥</h1>
-  <p>Enjoy all the tiny anime cuties floating around 😆💖</p>
+  <h1>Dance time! 💃🎉</h1>
+  <p>Let’s spin around, silly cutie 😜💖🫶</p>
+  <img src="gif3.gif" class="gif">
+  <button onclick="nextScreen(7)">Next ➡️</button>
 </div>
 
-<div class="hearts" id="hearts"></div>
-<div class="confetti" id="confetti"></div>
+<div class="screen" id="screen7">
+  <h1>Heart explosion! 💘💥</h1>
+  <p>You’re literally the funniest & cutest human ever 🥰😂💖</p>
+  <img src="gif4.gif" class="gif">
+  <button onclick="nextScreen(8)">Next ➡️</button>
+</div>
+
+<div class="screen" id="screen8">
+  <h1>Forever yours 😎💖</h1>
+  <p>Mmnaa, can’t wait for more chaos, hugs & kisses 😘💘💞 Happy Valentine’s Month 2026! 🎉</p>
+  <button onclick="alert('Love uuu 😍💖💋')">End 💕</button>
+</div>
 
 <script>
 const screens = document.querySelectorAll('.screen');
 const music = document.getElementById('music');
 const heartsContainer = document.getElementById('hearts');
-const confettiContainer = document.getElementById('confetti');
 const yesBtn = document.getElementById('yesBtn');
 const noBtn = document.getElementById('noBtn');
-
-const gifFiles = ['gif1.gif','gif2.gif','gif3.gif','gif4.gif']; // all GIFs in same folder
 
 function nextScreen(num){
   screens.forEach(s=>s.classList.remove('active'));
@@ -106,58 +115,26 @@ function nextScreen(num){
 // NO button disappears
 noBtn.addEventListener('mouseenter',()=>{ noBtn.style.display='none'; });
 
-// YES button triggers everything
+// YES button triggers music & starts floating hearts
 yesBtn.addEventListener('click',()=>{
   nextScreen(4);
-  music.currentTime = 34; // chorus start
+  music.currentTime = 34; // start chorus
   music.play();
   spawnHearts();
-  spawnConfetti();
-  spawnChibiGifs();
 });
 
-// Hearts
+// Floating hearts
 function spawnHearts(){
   setInterval(()=>{
     const h = document.createElement('div');
-    h.className='heart'; h.innerText='💖';
+    h.className='heart';
+    h.innerText='💖';
     h.style.left=Math.random()*100+'vw';
+    h.style.fontSize=(Math.random()*30+20)+'px';
     h.style.animationDuration=(Math.random()*2+2)+'s';
     heartsContainer.appendChild(h);
     setTimeout(()=>h.remove(),4000);
-  },150);
-}
-
-// Confetti
-function spawnConfetti(){
-  setInterval(()=>{
-    const c=document.createElement('div');
-    c.className='confetti-piece';
-    c.style.left=Math.random()*100+'vw';
-    c.style.background=["#ff1e56","#ffb3c6","#ffd700","#06d6a0"][Math.floor(Math.random()*4)];
-    confettiContainer.appendChild(c);
-    setTimeout(()=>c.remove(),4000);
-  },100);
-}
-
-// Chibi gifs chaos (spawn outside text boxes)
-function spawnChibiGifs(){
-  setInterval(()=>{
-    const g = document.createElement('img');
-    g.className='gif';
-    g.src = gifFiles[Math.floor(Math.random()*gifFiles.length)];
-    
-    // Spawn outside main text box (.screen)
-    const top = Math.random() * (window.innerHeight - 400); // leave space for screen box
-    const left = Math.random() * (window.innerWidth - 100);
-    g.style.top = top + 'px';
-    g.style.left = left + 'px';
-    g.style.transform = `rotate(${Math.random()*360}deg)`;
-    g.style.zIndex = '2'; // behind text
-    document.body.appendChild(g);
-    
-    setTimeout(()=>g.remove(),5000);
-  },600);
+  },200);
 }
 </script>
 
