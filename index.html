@@ -2,159 +2,173 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Valentine 💖</title>
+  <title>For Mmmmmnaaaa 💖</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
-    * {
-      box-sizing: border-box;
-      font-family: 'Comic Sans MS', 'Arial Black', sans-serif;
-    }
-
     body {
       margin: 0;
       height: 100vh;
-      background: linear-gradient(135deg, #ff4d6d, #ffb3c6);
+      background: radial-gradient(circle at top, #ff9a9e, #fad0c4);
       display: flex;
       justify-content: center;
       align-items: center;
       overflow: hidden;
+      font-family: 'Arial Black', 'Comic Sans MS', sans-serif;
     }
 
-    .card {
+    .box {
       background: white;
-      padding: 40px;
-      border-radius: 30px;
+      padding: 45px;
+      border-radius: 35px;
       text-align: center;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.3);
-      animation: pop 1s ease;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.35);
       max-width: 90%;
+      animation: appear 0.8s ease;
     }
 
     h1 {
-      font-size: 3rem;
+      font-size: 3.2rem;
       font-weight: 900;
       color: #ff006e;
-      margin-bottom: 20px;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      font-size: 2rem;
+      color: #333;
+      margin-bottom: 25px;
     }
 
     p {
-      font-size: 1.8rem;
+      font-size: 1.6rem;
       font-weight: 800;
-      color: #333;
       margin-bottom: 30px;
+      color: #444;
     }
 
     button {
-      font-size: 1.6rem;
+      font-size: 1.7rem;
       font-weight: 900;
-      padding: 15px 35px;
+      padding: 18px 40px;
+      border-radius: 60px;
       border: none;
-      border-radius: 50px;
       cursor: pointer;
-      transition: transform 0.2s, box-shadow 0.2s;
+      transition: transform 0.2s;
     }
 
-    #yesBtn {
-      background: #06d6a0;
+    #yes {
+      background: #ff006e;
       color: white;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+      box-shadow: 0 12px 25px rgba(0,0,0,0.3);
     }
 
-    #yesBtn:hover {
+    #yes:hover {
       transform: scale(1.15);
     }
 
-    #noBtn {
-      background: #ccc;
+    #no {
+      background: #ddd;
       margin-left: 15px;
-    }
-
-    .hidden {
-      display: none;
-    }
-
-    .celebrate {
-      animation: shake 0.3s infinite;
-    }
-
-    @keyframes pop {
-      0% { transform: scale(0); }
-      100% { transform: scale(1); }
-    }
-
-    @keyframes shake {
-      0% { transform: rotate(-2deg); }
-      50% { transform: rotate(2deg); }
-      100% { transform: rotate(-2deg); }
     }
 
     .heart {
       position: absolute;
-      font-size: 2rem;
-      animation: float 4s linear infinite;
+      font-size: 2.5rem;
+      animation: floatUp 4s linear infinite;
     }
 
-    @keyframes float {
-      0% {
-        transform: translateY(100vh) scale(0.5);
+    @keyframes floatUp {
+      from {
+        transform: translateY(100vh) scale(0.7);
         opacity: 1;
       }
-      100% {
-        transform: translateY(-10vh) scale(1.5);
+      to {
+        transform: translateY(-10vh) scale(1.6);
         opacity: 0;
       }
+    }
+
+    @keyframes appear {
+      from { transform: scale(0); }
+      to { transform: scale(1); }
+    }
+
+    .dance {
+      animation: wiggle 0.3s infinite;
+    }
+
+    @keyframes wiggle {
+      0% { transform: rotate(-2deg); }
+      50% { transform: rotate(2deg); }
+      100% { transform: rotate(-2deg); }
     }
   </style>
 </head>
 
 <body>
 
+  <!-- MUSIC -->
   <audio id="music" loop>
     <source src="caramelldansen.mp3" type="audio/mpeg">
   </audio>
 
-  <div class="card" id="card">
+  <!-- MAIN BOX -->
+  <div class="box" id="box">
     <h1>Hey Mmmmmnaaaa 💕</h1>
-    <p>Will you be my Valentine? 🥺💖</p>
+    <h2>I have an extremely serious question 🫣</h2>
+    <p>
+      Will you be my Valentine? 🌹<br>
+      This decision may result in unlimited love,<br>
+      bad jokes, random hugs, and chaos.
+    </p>
 
-    <button id="yesBtn">YES 💘</button>
-    <button id="noBtn">NO 😐</button>
+    <button id="yes">YES OMG 💖</button>
+    <button id="no">NO 😶</button>
   </div>
 
   <script>
-    const yesBtn = document.getElementById("yesBtn");
-    const noBtn = document.getElementById("noBtn");
-    const card = document.getElementById("card");
+    const yes = document.getElementById("yes");
+    const no = document.getElementById("no");
+    const box = document.getElementById("box");
     const music = document.getElementById("music");
 
-    noBtn.addEventListener("mouseover", () => {
-      noBtn.style.display = "none";
+    no.addEventListener("mouseenter", () => {
+      no.style.display = "none";
     });
 
-    yesBtn.addEventListener("click", () => {
+    yes.addEventListener("click", () => {
+      // FORCE music play after interaction
+      music.currentTime = 0;
       music.play();
-      card.classList.add("celebrate");
-      card.innerHTML = `
-        <h1>YAYYYYY 🎉💖</h1>
-        <p>I won the BEST Valentine ever 😍<br>Mmmmmnaaaa 💕</p>
+
+      box.classList.add("dance");
+      box.innerHTML = `
+        <h1>YAYYYYY 💃🕺</h1>
+        <p>
+          IT'S CARAMELLDANSEN TIME 🎶💖<br><br>
+          Gör som vi gör 💃<br>
+          Ta några steg åt vänster 🕺<br>
+          Lyssna och lär 😌<br><br>
+          I officially won the best Valentine ever 😍<br>
+          <strong>Mmmmmnaaaa 💕</strong>
+        </p>
       `;
+
       spawnHearts();
     });
 
     function spawnHearts() {
       setInterval(() => {
-        const heart = document.createElement("div");
-        heart.classList.add("heart");
-        heart.innerText = "💖";
-        heart.style.left = Math.random() * 100 + "vw";
-        heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
-        document.body.appendChild(heart);
+        const h = document.createElement("div");
+        h.className = "heart";
+        h.innerText = "💖";
+        h.style.left = Math.random() * 100 + "vw";
+        h.style.animationDuration = (Math.random() * 2 + 3) + "s";
+        document.body.appendChild(h);
 
-        setTimeout(() => {
-          heart.remove();
-        }, 5000);
-      }, 200);
+        setTimeout(() => h.remove(), 5000);
+      }, 180);
     }
   </script>
 
