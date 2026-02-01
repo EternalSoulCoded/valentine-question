@@ -2,169 +2,175 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>For Mmmmmnaaaa 💘</title>
+<title>For Mmmmmnaaaa 💖</title>
 
 <style>
+  * {
+    box-sizing: border-box;
+  }
+
   body {
     margin: 0;
     height: 100vh;
-    background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb);
-    font-family: 'Comic Sans MS', cursive, sans-serif;
-    overflow: hidden;
+    background: radial-gradient(circle at top, #ff7a9c, #ff1e56);
+    font-family: "Arial Black", Arial, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
+    overflow: hidden;
   }
 
   .card {
     background: white;
-    padding: 40px 30px;
-    border-radius: 30px;
-    width: 90%;
-    max-width: 420px;
-    box-shadow: 0 25px 50px rgba(0,0,0,0.3);
-    animation: pop 1s ease;
-    z-index: 2;
+    padding: 45px 25px;
+    border-radius: 35px;
+    width: 92%;
+    max-width: 450px;
+    box-shadow: 0 35px 80px rgba(0,0,0,0.4);
+    animation: bounceIn 0.9s ease;
   }
 
-  @keyframes pop {
+  @keyframes bounceIn {
     0% { transform: scale(0); }
-    70% { transform: scale(1.1); }
+    70% { transform: scale(1.15); }
     100% { transform: scale(1); }
   }
 
   h1 {
-  color: #ff3366;
-  margin-bottom: 10px;
-  font-size: 36px;
-}
+    font-size: 44px;
+    font-weight: 900;
+    color: #ff1e56;
+    margin-bottom: 10px;
+  }
 
-h2 {
-  font-size: 22px;
-  color: #444;
-}
+  h2 {
+    font-size: 30px;
+    font-weight: 900;
+    color: #111;
+    margin: 20px 0;
+  }
 
-.typing {
-  font-size: 18px;
-  color: #666;
-}
+  p {
+    font-size: 22px;
+    font-weight: 700;
+    color: #444;
+    margin-bottom: 20px;
+  }
 
   button {
-    padding: 16px 32px;
-  margin: 20px 12px;
-  font-size: 22px;
+    font-size: 26px;
+    font-weight: 900;
+    padding: 18px 42px;
+    border-radius: 50px;
     border: none;
-    border-radius: 30px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    margin: 15px;
+    transition: transform 0.15s ease;
   }
 
   #yes {
-    background: #ff4d6d;
+    background: #ff1e56;
     color: white;
   }
 
   #yes:hover {
-    transform: scale(1.2) rotate(-2deg);
+    transform: scale(1.2);
   }
 
   #no {
-    background: #bbb;
+    background: #bdbdbd;
+    color: #333;
   }
 
   .heart {
     position: absolute;
-    animation: float 4s linear infinite;
-    font-size: 22px;
+    font-size: 34px;
+    animation: floatUp 4s linear infinite;
   }
 
-  @keyframes float {
-    from { transform: translateY(100vh); opacity: 1; }
-    to { transform: translateY(-10vh); opacity: 0; }
+  @keyframes floatUp {
+    from {
+      transform: translateY(110vh);
+      opacity: 1;
+    }
+    to {
+      transform: translateY(-10vh);
+      opacity: 0;
+    }
   }
 
   .final {
     position: fixed;
     inset: 0;
-    background: radial-gradient(circle, #ff758c, #ff7eb3);
+    background: radial-gradient(circle, #ff1e56, #ff9ab5);
     color: white;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    z-index: 10;
-    animation: fade 1s ease;
-    padding: 20px;
+    padding: 30px;
+    z-index: 20;
+    animation: fadeIn 0.6s ease;
   }
 
-  @keyframes fade {
+  @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
+  }
+
+  .final h1 {
+    font-size: 52px;
+    font-weight: 900;
+  }
+
+  .final p {
+    font-size: 26px;
+    font-weight: 800;
+    margin: 8px 0;
   }
 </style>
 </head>
 
 <body>
 
-<audio id="music" src="caramelldansen.mp3" loop></audio>
+<!-- MUSIC -->
+<audio id="music" loop>
+  <source src="caramelldansen.mp3" type="audio/mpeg">
+</audio>
 
-<div class="card">
-  <h1>Mmmmmnaaaa 💖</h1>
-  <h2>I built this just for you…</h2>
-  <div class="typing" id="typing"></div>
+<div class="card" id="card">
+  <h1>Mmmmmnaaaa 💕</h1>
+  <p>This is officially your moment 😌</p>
 
-  <h2 style="margin-top:20px;">Will you be my Valentine? 💘</h2>
+  <h2>Will you be my Valentine? 💘</h2>
 
-  <button id="yes" onclick="yesClick()">YES 🥰</button>
+  <button id="yes" onclick="yesClick()">YES 💖</button>
   <button id="no" onclick="noClick()">NO 🙃</button>
 </div>
 
 <script>
-  const text = [
-    "This page took effort 👀",
-    "Saying no might break the internet",
-    "Also… you look extra cute today 💕",
-    "Okay serious question below ⬇️"
-  ];
-  let i = 0;
-
-  function typeText() {
-    if (i < text.length) {
-      document.getElementById("typing").innerText = text[i];
-      i++;
-      setTimeout(typeText, 1500);
-    }
-  }
-  typeText();
-
-  function hearts() {
+  function spawnHearts() {
     setInterval(() => {
-      const h = document.createElement("div");
-      h.className = "heart";
-      h.innerHTML = ["💖","💘","💕","💞","❤️"][Math.floor(Math.random()*5)];
-      h.style.left = Math.random() * 100 + "vw";
-      h.style.fontSize = (18 + Math.random()*25) + "px";
-      document.body.appendChild(h);
-      setTimeout(() => h.remove(), 4000);
-    }, 200);
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.innerHTML = "💖";
+      heart.style.left = Math.random() * 100 + "vw";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 4000);
+    }, 180);
   }
 
   function yesClick() {
     document.getElementById("music").play();
-    hearts();
+    spawnHearts();
 
     document.body.innerHTML += `
       <div class="final">
-        <h1>YAYYYY 🎉💖</h1>
-        <h2>Mmmmmnaaaa said YES 😭💘</h2>
-        <p>You unlocked:</p>
-        <p>✨ Unlimited smiles</p>
-        <p>✨ Extra attention</p>
-        <p>✨ A very happy Valentine</p>
-        <p style="font-size:14px;margin-top:10px;">
-          (There was never a real choice btw 😌)
-        </p>
+        <h1>YAYYYYY 💃💖</h1>
+        <p>Mmmmmnaaaa said YES 😭</p>
+        <p>Caramelldansen time 🎶</p>
+        <p>Happy Valentine’s Day 💘</p>
       </div>
     `;
   }
