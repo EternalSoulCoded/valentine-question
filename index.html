@@ -1,184 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>For Mmmmmnaaaa 💖</title>
+  <meta charset="UTF-8">
+  <title>Valentine 💖</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<style>
-  * {
-    box-sizing: border-box;
-  }
-
-  body {
-    margin: 0;
-    height: 100vh;
-    background: radial-gradient(circle at top, #ff7a9c, #ff1e56);
-    font-family: "Arial Black", Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    overflow: hidden;
-  }
-
-  .card {
-    background: white;
-    padding: 45px 25px;
-    border-radius: 35px;
-    width: 92%;
-    max-width: 450px;
-    box-shadow: 0 35px 80px rgba(0,0,0,0.4);
-    animation: bounceIn 0.9s ease;
-  }
-
-  @keyframes bounceIn {
-    0% { transform: scale(0); }
-    70% { transform: scale(1.15); }
-    100% { transform: scale(1); }
-  }
-
-  h1 {
-    font-size: 44px;
-    font-weight: 900;
-    color: #ff1e56;
-    margin-bottom: 10px;
-  }
-
-  h2 {
-    font-size: 30px;
-    font-weight: 900;
-    color: #111;
-    margin: 20px 0;
-  }
-
-  p {
-    font-size: 22px;
-    font-weight: 700;
-    color: #444;
-    margin-bottom: 20px;
-  }
-
-  button {
-    font-size: 26px;
-    font-weight: 900;
-    padding: 18px 42px;
-    border-radius: 50px;
-    border: none;
-    cursor: pointer;
-    margin: 15px;
-    transition: transform 0.15s ease;
-  }
-
-  #yes {
-    background: #ff1e56;
-    color: white;
-  }
-
-  #yes:hover {
-    transform: scale(1.2);
-  }
-
-  #no {
-    background: #bdbdbd;
-    color: #333;
-  }
-
-  .heart {
-    position: absolute;
-    font-size: 34px;
-    animation: floatUp 4s linear infinite;
-  }
-
-  @keyframes floatUp {
-    from {
-      transform: translateY(110vh);
-      opacity: 1;
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Comic Sans MS', 'Arial Black', sans-serif;
     }
-    to {
-      transform: translateY(-10vh);
-      opacity: 0;
+
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #ff4d6d, #ffb3c6);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
     }
-  }
 
-  .final {
-    position: fixed;
-    inset: 0;
-    background: radial-gradient(circle, #ff1e56, #ff9ab5);
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    padding: 30px;
-    z-index: 20;
-    animation: fadeIn 0.6s ease;
-  }
+    .card {
+      background: white;
+      padding: 40px;
+      border-radius: 30px;
+      text-align: center;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+      animation: pop 1s ease;
+      max-width: 90%;
+    }
 
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
+    h1 {
+      font-size: 3rem;
+      font-weight: 900;
+      color: #ff006e;
+      margin-bottom: 20px;
+    }
 
-  .final h1 {
-    font-size: 52px;
-    font-weight: 900;
-  }
+    p {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #333;
+      margin-bottom: 30px;
+    }
 
-  .final p {
-    font-size: 26px;
-    font-weight: 800;
-    margin: 8px 0;
-  }
-</style>
+    button {
+      font-size: 1.6rem;
+      font-weight: 900;
+      padding: 15px 35px;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    #yesBtn {
+      background: #06d6a0;
+      color: white;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    }
+
+    #yesBtn:hover {
+      transform: scale(1.15);
+    }
+
+    #noBtn {
+      background: #ccc;
+      margin-left: 15px;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .celebrate {
+      animation: shake 0.3s infinite;
+    }
+
+    @keyframes pop {
+      0% { transform: scale(0); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes shake {
+      0% { transform: rotate(-2deg); }
+      50% { transform: rotate(2deg); }
+      100% { transform: rotate(-2deg); }
+    }
+
+    .heart {
+      position: absolute;
+      font-size: 2rem;
+      animation: float 4s linear infinite;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) scale(0.5);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-10vh) scale(1.5);
+        opacity: 0;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<!-- MUSIC -->
-<audio id="music" loop>
-  <source src="caramelldansen.mp3" type="audio/mpeg">
-</audio>
+  <audio id="music" loop>
+    <source src="caramelldansen.mp3" type="audio/mpeg">
+  </audio>
 
-<div class="card" id="card">
-  <h1>Mmmmmnaaaa 💕</h1>
-  <p>This is officially your moment 😌</p>
+  <div class="card" id="card">
+    <h1>Hey Mmmmmnaaaa 💕</h1>
+    <p>Will you be my Valentine? 🥺💖</p>
 
-  <h2>Will you be my Valentine? 💘</h2>
+    <button id="yesBtn">YES 💘</button>
+    <button id="noBtn">NO 😐</button>
+  </div>
 
-  <button id="yes" onclick="yesClick()">YES 💖</button>
-  <button id="no" onclick="noClick()">NO 🙃</button>
-</div>
+  <script>
+    const yesBtn = document.getElementById("yesBtn");
+    const noBtn = document.getElementById("noBtn");
+    const card = document.getElementById("card");
+    const music = document.getElementById("music");
 
-<script>
-  function spawnHearts() {
-    setInterval(() => {
-      const heart = document.createElement("div");
-      heart.className = "heart";
-      heart.innerHTML = "💖";
-      heart.style.left = Math.random() * 100 + "vw";
-      document.body.appendChild(heart);
-      setTimeout(() => heart.remove(), 4000);
-    }, 180);
-  }
+    noBtn.addEventListener("mouseover", () => {
+      noBtn.style.display = "none";
+    });
 
-  function yesClick() {
-    document.getElementById("music").play();
-    spawnHearts();
+    yesBtn.addEventListener("click", () => {
+      music.play();
+      card.classList.add("celebrate");
+      card.innerHTML = `
+        <h1>YAYYYYY 🎉💖</h1>
+        <p>I won the BEST Valentine ever 😍<br>Mmmmmnaaaa 💕</p>
+      `;
+      spawnHearts();
+    });
 
-    document.body.innerHTML += `
-      <div class="final">
-        <h1>YAYYYYY 💃💖</h1>
-        <p>Mmmmmnaaaa said YES 😭</p>
-        <p>Caramelldansen time 🎶</p>
-        <p>Happy Valentine’s Day 💘</p>
-      </div>
-    `;
-  }
+    function spawnHearts() {
+      setInterval(() => {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerText = "💖";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
+        document.body.appendChild(heart);
 
-  function noClick() {
-    document.getElementById("no").style.display = "none";
-  }
-</script>
+        setTimeout(() => {
+          heart.remove();
+        }, 5000);
+      }, 200);
+    }
+  </script>
 
 </body>
 </html>
