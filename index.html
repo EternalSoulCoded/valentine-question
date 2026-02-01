@@ -7,22 +7,22 @@
 <style>
 * { box-sizing: border-box; font-family:'Comic Sans MS','Arial Black',sans-serif; }
 body { margin:0; min-height:100vh; display:flex; justify-content:center; align-items:center; background:linear-gradient(135deg,#ff9a9e,#fad0c4); overflow:hidden; }
-
-.screen { display:none; width:95%; max-width:480px; background:white; padding:45px; border-radius:40px; box-shadow:0 30px 80px rgba(0,0,0,0.35); text-align:center; position:relative; z-index:10; }
+.screen { display:none; width:95%; max-width:480px; background:white; padding:45px; border-radius:40px; box-shadow:0 30px 80px rgba(0,0,0,0.35); text-align:center; position:relative; }
 .active { display:block; animation:popIn 0.8s ease; }
-
 h1 { font-size:3rem; font-weight:900; color:#ff006e; margin-bottom:10px; }
 p { font-size:1.6rem; font-weight:700; color:#555; margin-bottom:25px; word-wrap:break-word; }
-
 button { font-size:1.7rem; font-weight:900; padding:16px 38px; border:none; border-radius:60px; cursor:pointer; transition:transform 0.2s,box-shadow 0.2s; margin:5px; }
 button:hover { transform:scale(1.1) rotate(-1deg); }
 #yesBtn { background:#ff1e56; color:white; box-shadow:0 12px 25px rgba(255,30,86,0.5); }
 #noBtn { background:#ddd; color:#333; }
 
-.gif { width:200px; height:200px; margin:20px auto; display:block; border-radius:30px; box-shadow:0 10px 20px rgba(0,0,0,0.3); }
+.hearts { position:fixed; inset:0; pointer-events:none; }
+.heart { position:absolute; font-size:2.5rem; animation:floatUp 3s linear infinite; }
 
-.hearts { position:fixed; inset:0; pointer-events:none; z-index:5; }
-.heart { position:absolute; font-size:2rem; animation:floatUp 3s linear infinite; }
+.confetti { position:fixed; inset:0; pointer-events:none; }
+.confetti-piece { position:absolute; width:10px; height:10px; opacity:0.9; }
+
+.gif { width:80px; height:80px; position:absolute; pointer-events:none; }
 
 @keyframes popIn { from{transform:scale(0.6); opacity:0;} to{transform:scale(1); opacity:1;} }
 @keyframes floatUp { from{transform:translateY(100vh) scale(0.6);opacity:1;} to{transform:translateY(-10vh) scale(1.5);opacity:0;} }
@@ -32,78 +32,59 @@ button:hover { transform:scale(1.1) rotate(-1deg); }
 
 <audio id="music" src="caramelldansen.mp3" loop></audio>
 
-<div class="hearts" id="hearts"></div>
-
-<!-- Screens before YES -->
+<!-- Screens -->
 <div class="screen active" id="screen1">
-  <h1>Yo Mmnaa <3 💕</h1>
-  <p>Lowkey feels unreal… we started chatting Dec 2025 & boom, suddenly we’re all kisses & hugs 😭💖</p>
-  <p>Feb 2026 = Valentine’s month & I’m already head over heels 😎💘</p>
+  <h1>Hey Mmnaa <3 💕</h1>
+  <p>It feels unreal… we started talking in December 2025, and suddenly here we are, hugging, laughing… and it’s only been a month 😍</p>
+  <p>Now it’s February 2026 — Valentine’s month! 🌹 I already love you sooo much 💖</p>
   <button onclick="nextScreen(2)">Next ➡️</button>
 </div>
 
 <div class="screen" id="screen2">
-  <h1>Quick lil quiz 😜</h1>
-  <p>Who’s the absolute goofiest in our chaos? 😂</p>
+  <h1>Fun Little Quiz 😜</h1>
+  <p>Who’s the goofiest in our crazy story?</p>
   <div>
-    <button onclick="alert('100% you 😏')">You 😏</button>
-    <button onclick="alert('Maybe me 🤷‍♂️')">Me 😅</button>
+    <button onclick="alert('Definitely you 😎')">You 😏</button>
+    <button onclick="alert('Maybe me 😆')">Me 😅</button>
   </div>
-  <p>Craziest moment this month?</p>
+  <p>Funniest moment this month?</p>
   <div>
-    <button onclick="alert('That wild hug 😭💖')">Hug 😘</button>
-    <button onclick="alert('Sneaky kiss 😍')">Kiss 💋</button>
+    <button onclick="alert('Random hug 😭💖')">Hug 😘</button>
+    <button onclick="alert('Cheeky kiss 😍')">Kiss 💋</button>
   </div>
   <button onclick="nextScreen(3)">Next ➡️</button>
 </div>
 
 <div class="screen" id="screen3">
-  <h1>So… will u b my Valentine? 💘</h1>
+  <h1>Will you be my Valentine this month? 💘</h1>
   <div>
-    <button id="yesBtn">YAAAS 💖</button>
-    <button id="noBtn">Nope 😶</button>
+    <button id="yesBtn">YES 💖</button>
+    <button id="noBtn">NO 😶</button>
   </div>
 </div>
 
-<!-- Screens after YES click -->
 <div class="screen" id="screen4">
-  <h1>Yaaay 😍</h1>
-  <p>OMG Mmnaa, you just made my heart explode 💥💖💘</p>
-  <img src="gif1.gif" class="gif">
+  <h1>Celebration Time! 🎉💃</h1>
+  <p>You made me the happiest person alive 😭💖</p>
+  <p>Random hugs, kisses, and chaos incoming 😆💘</p>
   <button onclick="nextScreen(5)">Next ➡️</button>
 </div>
 
 <div class="screen" id="screen5">
-  <h1>Hugs incoming! 🤗💞</h1>
-  <p>Every moment with you is wild and fun AF 😂💖💋</p>
-  <img src="gif2.gif" class="gif">
-  <button onclick="nextScreen(6)">Next ➡️</button>
+  <h1>I love you Mmnaa <3 💖</h1>
+  <p>Thank you for being the funniest, cutest, most amazing girl ever 😍</p>
+  <p>Happy Valentine’s Month 2026! 🥰 Here’s to more chaos, kisses, and hugs 💕</p>
 </div>
 
-<div class="screen" id="screen6">
-  <h1>Dance time! 💃🎉</h1>
-  <p>Let’s spin around, silly cutie 😜💖🫶</p>
-  <img src="gif3.gif" class="gif">
-  <button onclick="nextScreen(7)">Next ➡️</button>
-</div>
-
-<div class="screen" id="screen7">
-  <h1>Heart explosion! 💘💥</h1>
-  <p>You’re literally the funniest & cutest human ever 🥰😂💖</p>
-  <img src="gif4.gif" class="gif">
-  <button onclick="nextScreen(8)">Next ➡️</button>
-</div>
-
-<div class="screen" id="screen8">
-  <h1>Forever yours 😎💖</h1>
-  <p>Mmnaa, can’t wait for more chaos, hugs & kisses 😘💘💞 Happy Valentine’s Month 2026! 🎉</p>
-  <button onclick="alert('Love uuu 😍💖💋')">End 💕</button>
-</div>
+<div class="hearts" id="hearts"></div>
+<div class="confetti" id="confetti"></div>
 
 <script>
+// Screens
 const screens = document.querySelectorAll('.screen');
 const music = document.getElementById('music');
 const heartsContainer = document.getElementById('hearts');
+const confettiContainer = document.getElementById('confetti');
 const yesBtn = document.getElementById('yesBtn');
 const noBtn = document.getElementById('noBtn');
 
@@ -115,28 +96,55 @@ function nextScreen(num){
 // NO button disappears
 noBtn.addEventListener('mouseenter',()=>{ noBtn.style.display='none'; });
 
-// YES button triggers music & starts floating hearts
+// YES button triggers everything
 yesBtn.addEventListener('click',()=>{
   nextScreen(4);
-  music.currentTime = 34; // start chorus
+  music.currentTime = 34; // start from chorus
   music.play();
   spawnHearts();
+  spawnConfetti();
+  spawnChibiGifs(); // new chaotic chibi gifs
 });
 
-// Floating hearts
+// Hearts
 function spawnHearts(){
   setInterval(()=>{
     const h = document.createElement('div');
-    h.className='heart';
-    h.innerText='💖';
+    h.className='heart'; h.innerText='💖';
     h.style.left=Math.random()*100+'vw';
-    h.style.fontSize=(Math.random()*30+20)+'px';
     h.style.animationDuration=(Math.random()*2+2)+'s';
     heartsContainer.appendChild(h);
     setTimeout(()=>h.remove(),4000);
-  },200);
+  },150);
+}
+
+// Confetti
+function spawnConfetti(){
+  setInterval(()=>{
+    const c=document.createElement('div');
+    c.className='confetti-piece';
+    c.style.left=Math.random()*100+'vw';
+    c.style.background=["#ff1e56","#ffb3c6","#ffd700","#06d6a0"][Math.floor(Math.random()*4)];
+    confettiContainer.appendChild(c);
+    setTimeout(()=>c.remove(),4000);
+  },100);
+}
+
+// Chibi gifs chaos
+const gifFiles = ['gif1.gif','gif2.gif','gif3.gif','gif4.gif']; // put your downloaded chibi gifs in same folder
+
+function spawnChibiGifs(){
+  setInterval(()=>{
+    const g = document.createElement('img');
+    g.className='gif';
+    g.src = gifFiles[Math.floor(Math.random()*gifFiles.length)];
+    g.style.left = Math.random()*80+'vw';
+    g.style.top = Math.random()*60+'vh';
+    g.style.transform = `rotate(${Math.random()*360}deg)`;
+    document.body.appendChild(g);
+    setTimeout(()=>g.remove(),5000);
+  },800);
 }
 </script>
-
 </body>
 </html>
