@@ -73,7 +73,7 @@
 <div class="screen" id="screen4">
   <h1>Celebration Time! 🎉💃</h1>
   <p>You made me the happiest person alive 😭💖</p>
-  <img class="gif" src="https://media.giphy.com/media/3orieV0NH8Qyxk8M2w/giphy.gif" alt="dancing gif">
+  <img class="gif" src="https://i.pinimg.com/originals/0c/12/61/0c1261b1f89937f2188a0b0e71c5f21d.gif" alt="cute chibi hug">
   <p>Random hugs, kisses, and chaos incoming 😆💘</p>
   <button onclick="nextScreen(5)">Next ➡️</button>
 </div>
@@ -82,7 +82,7 @@
   <h1>I love you Mmnaa <3 💖</h1>
   <p>Thank you for being the funniest, cutest, most amazing girl ever 😍</p>
   <p>Happy Valentine’s Month 2026! 🥰 Here’s to more chaos, kisses, and hugs 💕</p>
-  <img class="gif" src="https://media.giphy.com/media/l0MYC0LajbaPoEADu/giphy.gif" alt="hearts gif">
+  <img class="gif" src="https://64.media.tumblr.com/9a3a057da601be0f0dc156cf8a54f6ee/tumblr_inline_p7l2nsP48s1u5b2l3_250.gif" alt="chibi couple hearts">
 </div>
 
 <!-- Effects -->
@@ -117,10 +117,10 @@ yesBtn.addEventListener('click',()=>{
 // Hearts
 function spawnHearts(){
   setInterval(()=>{
-    const h=document.createElement('div');
+    const h = document.createElement('div');
     h.className='heart'; h.innerText='💖';
-    h.style.left=Math.random()*100+'vw';
-    h.style.animationDuration=(Math.random()*2+2)+'s';
+    h.style.left = Math.random()*100+'vw';
+    h.style.animationDuration = (Math.random()*2+2)+'s';
     heartsContainer.appendChild(h);
     setTimeout(()=>h.remove(),4000);
   },150);
