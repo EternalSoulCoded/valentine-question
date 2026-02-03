@@ -1,140 +1,191 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mmnaa <3 Valentine 💖</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Mmnaa &lt;3 Valentine</title>
+
 <style>
-* { box-sizing: border-box; font-family:'Comic Sans MS','Arial Black',sans-serif; }
-body { margin:0; min-height:100vh; display:flex; justify-content:center; align-items:center; background:linear-gradient(135deg,#ff9a9e,#fad0c4); overflow:hidden; }
-
-.screen { display:none; width:95%; max-width:480px; background:white; padding:45px; border-radius:40px; box-shadow:0 30px 80px rgba(0,0,0,0.35); text-align:center; position:relative; z-index:10; }
-.active { display:block; animation:popIn 0.8s ease; }
-
-h1 { font-size:3rem; font-weight:900; color:#ff006e; margin-bottom:10px; }
-p { font-size:1.6rem; font-weight:700; color:#555; margin-bottom:25px; word-wrap:break-word; }
-
-button { font-size:1.7rem; font-weight:900; padding:16px 38px; border:none; border-radius:60px; cursor:pointer; transition:transform 0.2s,box-shadow 0.2s; margin:5px; }
-button:hover { transform:scale(1.1) rotate(-1deg); }
-#yesBtn { background:#ff1e56; color:white; box-shadow:0 12px 25px rgba(255,30,86,0.5); }
-#noBtn { background:#ddd; color:#333; }
-
-.gif { width:200px; height:200px; margin:20px auto; display:block; border-radius:30px; box-shadow:0 10px 20px rgba(0,0,0,0.3); }
-
-.hearts { position:fixed; inset:0; pointer-events:none; z-index:5; }
-.heart { position:absolute; font-size:2rem; animation:floatUp 3s linear infinite; }
-
-@keyframes popIn { from{transform:scale(0.6); opacity:0;} to{transform:scale(1); opacity:1;} }
-@keyframes floatUp { from{transform:translateY(100vh) scale(0.6);opacity:1;} to{transform:translateY(-10vh) scale(1.5);opacity:0;} }
+*{
+  box-sizing:border-box;
+  font-family: "Comic Sans MS","Poppins","Arial Black",system-ui,sans-serif;
+}
+body{
+  margin:0;
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:linear-gradient(135deg,#ff9a9e,#fad0c4,#fbc2eb);
+  overflow:hidden;
+}
+.card{
+  width:92%;
+  max-width:460px;
+  background:white;
+  padding:36px 28px 42px;
+  border-radius:36px;
+  text-align:center;
+  box-shadow:0 25px 60px rgba(0,0,0,.25);
+  display:none;
+  z-index:10;
+}
+.card.active{
+  display:block;
+  animation:pop .6s ease;
+}
+@keyframes pop{
+  from{transform:scale(.8);opacity:0}
+  to{transform:scale(1);opacity:1}
+}
+h1{
+  font-size:2.6rem;
+  font-weight:900;
+  color:#ff1e56;
+  margin-bottom:12px;
+}
+p{
+  font-size:1.35rem;
+  font-weight:700;
+  color:#444;
+  margin-bottom:18px;
+}
+button{
+  font-size:1.4rem;
+  font-weight:900;
+  padding:14px 34px;
+  border:none;
+  border-radius:999px;
+  cursor:pointer;
+  margin:6px;
+  transition:.2s;
+}
+button:hover{transform:scale(1.08)}
+.yes{
+  background:#ff1e56;
+  color:white;
+}
+.no{
+  background:#eee;
+  color:#333;
+}
+.gif{
+  width:190px;
+  max-width:80%;
+  margin:18px auto;
+  display:block;
+  border-radius:26px;
+  box-shadow:0 12px 25px rgba(0,0,0,.25);
+}
+.hearts{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:1;
+}
+.heart{
+  position:absolute;
+  animation:float 4s linear forwards;
+}
+@keyframes float{
+  from{transform:translateY(100vh) scale(.6);opacity:1}
+  to{transform:translateY(-10vh) scale(1.4);opacity:0}
+}
 </style>
 </head>
+
 <body>
 
 <audio id="music" src="caramelldansen.mp3" loop></audio>
-
 <div class="hearts" id="hearts"></div>
 
-<!-- Screens before YES -->
-<div class="screen active" id="screen1">
-  <h1>Yo Mmnaa <3 💕</h1>
-  <p>Lowkey feels unreal… we started chatting Dec 2025 & boom, suddenly we’re all kisses & hugs 😭💖</p>
-  <p>Feb 2026 = Valentine’s month & I’m already head over heels 😎💘</p>
-  <button onclick="nextScreen(2)">Next ➡️</button>
-</div>
-
-<div class="screen" id="screen2">
-  <h1>Quick lil quiz 😜</h1>
-  <p>Who’s the absolute goofiest in our chaos? 😂</p>
-  <div>
-    <button onclick="alert('100% you 😏')">You 😏</button>
-    <button onclick="alert('Maybe me 🤷‍♂️')">Me 😅</button>
-  </div>
-  <p>Craziest moment this month?</p>
-  <div>
-    <button onclick="alert('That wild hug 😭💖')">Hug 😘</button>
-    <button onclick="alert('Sneaky kiss 😍')">Kiss 💋</button>
-  </div>
-  <button onclick="nextScreen(3)">Next ➡️</button>
-</div>
-
-<div class="screen" id="screen3">
-  <h1>So… will u b my Valentine? 💘</h1>
-  <div>
-    <button id="yesBtn">YAAAS 💖</button>
-    <button id="noBtn">Nope 😶</button>
-  </div>
-</div>
-
-<!-- Screens after YES click -->
-<div class="screen" id="screen4">
-  <h1>Yaaay 😍</h1>
-  <p>OMG Mmnaa, you just made my heart explode 💥💖💘</p>
+<!-- Screen 1 -->
+<div class="card active" id="s1">
+  <h1>Hey Mmnaa &lt;3 💖</h1>
+  <p>Lowkey still can’t believe this is real fr.</p>
+  <p>We started talking in <b>Dec 2025</b>… and suddenly you’re my favorite human?? 😭💘</p>
   <img src="gif1.gif" class="gif">
-  <button onclick="nextScreen(5)">Next ➡️</button>
+  <button class="yes" onclick="go(2)">Next ➜</button>
 </div>
 
-<div class="screen" id="screen5">
-  <h1>Hugs incoming! 🤗💞</h1>
-  <p>Every moment with you is wild and fun AF 😂💖💋</p>
+<!-- Screen 2 -->
+<div class="card" id="s2">
+  <h1>This escalated FAST 😳</h1>
+  <p>One month in and we’re already hugs, kisses, and main-character moments 🫶✨</p>
+  <p>Ngl it feels unreal how intense this got so quick… but it feels right 🥹</p>
   <img src="gif2.gif" class="gif">
-  <button onclick="nextScreen(6)">Next ➡️</button>
+  <button class="yes" onclick="go(3)">Next ➜</button>
 </div>
 
-<div class="screen" id="screen6">
-  <h1>Dance time! 💃🎉</h1>
-  <p>Let’s spin around, silly cutie 😜💖🫶</p>
+<!-- Screen 3 -->
+<div class="card" id="s3">
+  <h1>So… 😏💘</h1>
+  <p>It’s <b>February 2026</b> — Valentine’s month.</p>
+  <p>I gotta ask this properly.</p>
+  <p><b>Will you be my Valentine?</b> 💕</p>
+  <button class="yes" id="yesBtn">YES 💖</button>
+  <button class="no" id="noBtn">No 🙄</button>
+</div>
+
+<!-- Screen 4 -->
+<div class="card" id="s4">
+  <h1>YOOOO 😍💥</h1>
+  <p>Okay wow. Heart = officially gone.</p>
+  <p>You really said yes and now I’m smiling like an idiot fr 😭💖</p>
   <img src="gif3.gif" class="gif">
-  <button onclick="nextScreen(7)">Next ➡️</button>
+  <button class="yes" onclick="go(5)">Next ➜</button>
 </div>
 
-<div class="screen" id="screen7">
-  <h1>Heart explosion! 💘💥</h1>
-  <p>You’re literally the funniest & cutest human ever 🥰😂💖</p>
+<!-- Screen 5 -->
+<div class="card" id="s5">
+  <h1>Real talk 🫶</h1>
+  <p>You’re the funniest, cutest, most chaotic-good human I know.</p>
+  <p>Every moment with you hits different 😌💞</p>
   <img src="gif4.gif" class="gif">
-  <button onclick="nextScreen(8)">Next ➡️</button>
+  <button class="yes" onclick="go(6)">Next ➜</button>
 </div>
 
-<div class="screen" id="screen8">
-  <h1>Forever yours 😎💖</h1>
-  <p>Mmnaa, can’t wait for more chaos, hugs & kisses 😘💘💞 Happy Valentine’s Month 2026! 🎉</p>
-  <button onclick="alert('Love uuu 😍💖💋')">End 💕</button>
+<!-- Screen 6 -->
+<div class="card" id="s6">
+  <h1>Mmnaa &lt;3 💘</h1>
+  <p>This is just the beginning.</p>
+  <p>More laughs, more hugs, more kisses, more us 🥰✨</p>
+  <p>Happy Valentine’s Month 💖</p>
 </div>
 
 <script>
-const screens = document.querySelectorAll('.screen');
-const music = document.getElementById('music');
-const heartsContainer = document.getElementById('hearts');
-const yesBtn = document.getElementById('yesBtn');
-const noBtn = document.getElementById('noBtn');
+const cards=document.querySelectorAll(".card");
+const music=document.getElementById("music");
+const hearts=document.getElementById("hearts");
+const yesBtn=document.getElementById("yesBtn");
+const noBtn=document.getElementById("noBtn");
 
-function nextScreen(num){
-  screens.forEach(s=>s.classList.remove('active'));
-  document.getElementById('screen'+num).classList.add('active');
+function go(n){
+  cards.forEach(c=>c.classList.remove("active"));
+  document.getElementById("s"+n).classList.add("active");
 }
 
-// NO button disappears
-noBtn.addEventListener('mouseenter',()=>{ noBtn.style.display='none'; });
+noBtn.addEventListener("mouseenter",()=>{
+  noBtn.style.transform=`translate(${Math.random()*120-60}px,${Math.random()*80-40}px)`;
+});
 
-// YES button triggers music & starts floating hearts
-yesBtn.addEventListener('click',()=>{
-  nextScreen(4);
-  music.currentTime = 34; // start chorus
+yesBtn.addEventListener("click",()=>{
+  go(4);
+  music.currentTime=34;
   music.play();
   spawnHearts();
 });
 
-// Floating hearts
 function spawnHearts(){
   setInterval(()=>{
-    const h = document.createElement('div');
-    h.className='heart';
-    h.innerText='💖';
-    h.style.left=Math.random()*100+'vw';
-    h.style.fontSize=(Math.random()*30+20)+'px';
-    h.style.animationDuration=(Math.random()*2+2)+'s';
-    heartsContainer.appendChild(h);
+    const h=document.createElement("div");
+    h.className="heart";
+    h.textContent="💖";
+    h.style.left=Math.random()*100+"vw";
+    h.style.fontSize=Math.random()*20+18+"px";
+    hearts.appendChild(h);
     setTimeout(()=>h.remove(),4000);
-  },200);
+  },220);
 }
 </script>
 
